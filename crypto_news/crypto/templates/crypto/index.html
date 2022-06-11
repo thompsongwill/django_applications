@@ -3,6 +3,61 @@
 
 {% block content %}
 
-<h1>Hello World</h1>
+<div class="jumbotron jumbotron-fluid p-3">
+    <h1 class="display-3">Welcome to Crypto Gist Centre</h1>
+    <p class="lead">We provide up to date news on Crypto and blockchain through <a href="https://www.cryptocompare.com/"> Crypto Compare Api </a> </p>
+    <hr class="my-4">
+    <p>You can't afford to be left behind</p>
+  </div>
+<div class="container">
+
+  <table class="table mt-5 table-hover">
+    <thead class="thead-dark bg-dark text-light">
+      <tr>
+   
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">24hr High</th>
+        <th scope="col">24hr Low</th>
+        <th scope="col">Market Cap</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for key,value in price.DISPLAY.items %}
+
+  
+      <tr>
+       
+        <td>{{ key }}</td>
+        <td>${{ value.USD.PRICE }}</td>
+        <td>{{ value.USD.HIGHDAY }}</td>
+        <td>{{ value.USD.LOWDAY }}</td>
+        <td>{{ value.USD.MKTCAP }} </td>
+      </tr>
+     
+  {% endfor %}
+    </tbody>
+
+
+</table>  
+    <div class="row">
+        {% for item in api.Data %}
+        <div class="col-sm mt-5">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ item.imageurl }}" class="card-img-top" alt="{{ item.source }} ">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.title }}</h5>
+              <p class="card-text">{{ item.body | truncatewords:30 }}</p>
+              <a href=" {{ item.url }}} " class="btn btn-info">read more</a>
+            </div>
+          </div>
+        </div>
+    
+          {% endfor %}
+    </div>
+</div>
+
+
+
 
 {% endblock %}

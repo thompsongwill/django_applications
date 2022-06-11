@@ -19,6 +19,7 @@ def index(request):
 def prices(request):
     if request.method == 'POST':
         quote = request.POST['quote']
+        quote = quote.upper()
         crypto_request = requests.get("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=" + quote + "&tsyms=USD")
         api_quote = json.loads(crypto_request.content)
         
@@ -27,5 +28,6 @@ def prices(request):
         return render(request, 'crypto/prices.html', {"quote":quote, 'crypto':api_quote})
     
     else:
-        return render(request, 'crypto/prices.html', {})
+        found = "Invalid input, Please input right keyword"
+        return render(request, 'crypto/prices.html', {'not_found':found})
     

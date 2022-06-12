@@ -3,6 +3,51 @@
 
 {% block content %}
 
-<h1>Weather</h1>
+
+
+<div class="row height d-flex justify-content-center align-items-center">
+
+    <div class="col-md-8">
+
+      <div class="search">
+        <form method="POST" class="">
+        {% csrf_token %}
+        <i class="fa fa-search"></i>
+        <input type="text" class="form-control" name="city" placeholder="Have a question? Ask Now">
+        <button class="btn btn-primary bg-primary">Search</button>
+    </form>
+      </div>
+      
+      <div class="alert alert-danger" role="alert">
+        {{ city }}
+      </div>
+
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Country Code
+          <span class="badge badge-primary badge-pill">{{ country_code }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Coordinate
+          <span class="badge badge-primary badge-pill">{{ coordinate }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Temp
+          <span class="badge badge-primary badge-pill">{{ temp }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Pressure
+            <span class="badge badge-primary badge-pill">{{ pressure }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            Humidity
+            <span class="badge badge-primary badge-pill">{{ humidity}}}</span>
+          </li>
+      </ul>
+
+
+    </div>
+    
+  </div>
 
 {% endblock %}

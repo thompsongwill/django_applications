@@ -13,39 +13,36 @@
         <form method="POST" class="">
         {% csrf_token %}
         <i class="fa fa-search"></i>
-        <input type="text" class="form-control" name="city" placeholder="Have a question? Ask Now">
+        <input type="text" class="form-control" name="city" placeholder="Lookup any City weather here?">
         <button class="btn btn-primary bg-primary">Search</button>
     </form>
       </div>
       
-      <div class="alert alert-danger" role="alert">
-        {{ city }}
-      </div>
-
-      <ul class="list-group">
+      {% if data.country_code %}
+      <h2 class="centered h2 mt-5">{{ city }}</h2>
+      <ul class="list-group mt-2">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Country Code
-          <span class="badge badge-primary badge-pill">{{ country_code }}</span>
+          <span class="badge badge-primary badge-pill p-3">{{ data.country_code }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Coordinate
-          <span class="badge badge-primary badge-pill">{{ coordinate }}</span>
+          <span class="badge badge-primary badge-pill p-3">{{ data.coordinate }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Temp
-          <span class="badge badge-primary badge-pill">{{ temp }}</span>
+          <span class="badge badge-primary badge-pill p-3">{{ data.temp }}</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
             Pressure
-            <span class="badge badge-primary badge-pill">{{ pressure }}</span>
+            <span class="badge badge-primary badge-pill p-3">{{ data.pressure }}</span>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             Humidity
-            <span class="badge badge-primary badge-pill">{{ humidity}}}</span>
+            <span class="badge badge-primary badge-pill p-3">{{ data.humidity }}</span>
           </li>
       </ul>
-
-
+      {% endif %}
     </div>
     
   </div>

@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 
 def home(request):
-    pass
+    return render(request, 'weather_detector/index.html')

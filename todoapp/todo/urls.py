@@ -8,4 +8,5 @@ urlpatterns = [
                 path('todos/', views.tasks, name='tasks'),
                 path('login/', views.signin, name='signin'),
                 path('logout/', views.signout, name='signout'),
+                path('create/', views.newTask, name='todo'),
                ]

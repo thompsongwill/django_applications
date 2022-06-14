@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
+from .forms import TodoForm
 
 # Create your views here.
 
@@ -47,5 +48,15 @@ def signin(request):
 def tasks(request):
     return render(request, 'todo/tasks.html')
 
+
+def newTask(request):
+    if request.method == "GET":
+        return render(request, 'todo/todo.html', {'form':TodoForm()})
+    
+    else:
+        form = TodoForm(request.POST)
+        new_to_do = form.save(commit=False)
+        new_to_do.user = request.user
+        new_to_do.save()
 
 

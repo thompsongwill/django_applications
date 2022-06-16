@@ -35,4 +35,22 @@ def add_product(request):
 
 def update_product(request,id):
     product = Product.objects.get(id=id)
+    if request.method == 'POST':
+        product.title = request.POST.get('title')
+        product.price = request.POST.get('price')
+        product.des = request.POST.get('desc')
+        product.image = request.FILES['upload']
+        
+        product.save()
+        return redirect('home')
+        
     return render(request, 'store/update_product.html', {'product':product})
+
+
+
+def delete(request, id):
+    product = Product.objects.get(id=id)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('home')
+    return render(request, 'store/delete.html', {'product':product})

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+
+
+ <div class="row row-cols-1 row-cols-md-3 g-2">
+
+ 
+
+{% for item in good %}
+
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'details' item.id %}" class="btn btn-secondary">{{ item.title }}</a> &#8358; {{ item.price }}</h5>
+          <p class="card-text">{{ item.des }}</p>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+
+
+
+
+
+
+</div>    
+
+
+{% endblock %}

@@ -7,19 +7,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'store/styles.css' %}">
 
     <title>online retailer</title>
   </head>
   <body>
-    <h1>Welcome to our shop</h1>
-    <div class="container">
+
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+
+                    <div >
+                        <a href="{% url 'home' %}" class="flex items-center px-2 py-5">
+                        <img class="h-8 w-8" src="{% static 'store/images/shop_logo.png' %}" alt="">
+                        <span class="text-gray-500 font-semibold text-lg">&nbsp; Retail Shop </span>
+                    </a>
+                    </div>
+
+                <div class="items-center flex space-x-1">
+                    <a href="{% url 'home' %}" class="px-2 py-5 text-gray-500 text-semibold">Home</a>
+                    <a href="" class="px-2 py-5 text-gray-500 text-semibold">About</a>
+                    <a href="" class="px-2 py-5 text-gray-500 text-semibold">Contact</a>
+                   
+                </div>
+
+        </div>
+    </div>
+</div>
+    </nav>
+
+
+
+
+
+ 
     {% block content %}
     {% endblock %}
- </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ 
 
   </body>
 </html>

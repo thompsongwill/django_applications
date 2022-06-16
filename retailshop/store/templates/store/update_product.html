@@ -2,23 +2,23 @@
 
 {% block content %}
 
-<h1 class="text-2xl font-bold m-10">+Add Product</h1>
+<h1 class="text-2xl font-bold m-10">+ Update Product</h1>
 <form class="bg-white shadow-md m-10 px-8 py-8 w-2/6" action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mb-4"> 
 
     <label for="" class="block text-gray-500 text-sm font-bold mb-2 ">Product Name</label>
-    <input class="w-10/12 shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="title" placeholder="Laptop" id="name">
+    <input class="w-10/12 shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="title" placeholder="Laptop" id="name" value="{{ product.title }}">
     </div>
 
     <div class="mb-4">
         <label class="block text-gray-500 text-sm font-bold mb-2" for="">Product price </label>
-    <input  class=" w-10/12 shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="price" placeholder="e.g:500 " id="price">
+    <input  class=" w-10/12 shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" value="{{ product.price }}" name="price" placeholder="e.g:500 " id="price">
     </div>   
     
     <div class="mb-4">
         <label class="block text-gray-500 text-sm font-bold mb-2" for="">Description</label>
-    <input  class="w-10/12 shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="desc" placeholder="core i7Hp laptop" id="des">
+    <input  class="w-10/12 shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="desc" value="{{ product.des }}" placeholder="core i7Hp laptop" id="des">
     </div>
 
     <div class="mb-4">
@@ -27,7 +27,7 @@
     </div>
 <div>
 
-    <input class=" w-10/12 bg-green-500 text-white px-5 py-2" type="submit" value="Add Product">
+    <input class=" w-10/12 bg-green-500 text-white px-5 py-2" type="submit" value="Update">
 </div>
 </form>
 

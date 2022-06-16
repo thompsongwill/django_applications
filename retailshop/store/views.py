@@ -31,3 +31,8 @@ def add_product(request):
         product.save()
     
     return render(request, 'store/addproduct.html')
+
+
+def update_product(request,id):
+    product = Product.objects.get(id=id)
+    return render(request, 'store/update_product.html', {'product':product})

@@ -10,7 +10,7 @@
     <div class="mt-5">{{ product.title }}</div>
     <div class="mt-5 text-green-500"> &#x20A6;{{ product.price }} </div>
     <div class="mt-5 text-gray-700">{{ product.des }}</div>
-    <div class="mt-5 text-gray-700">Posted by: {{product.seller}}</div>
+    <div class="mt-5 text-gray-700">  Posted by: <a href="{% url 'users:sellerprofile' product.seller.id %}">{{product.seller}}</a>  </div>
     <div class="text-gray-700">for more info: {{product.seller.profile.contact_number}}</div>
    
    </div>

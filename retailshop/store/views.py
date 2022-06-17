@@ -56,3 +56,9 @@ def delete(request, id):
         product.delete()
         return redirect('store:home')
     return render(request, 'store/delete.html', {'product':product})
+
+@login_required
+def listings(request):
+    products = Product.objects.filter(seller=request.user)
+    
+    return render(request,'store/listings.html', {'products':products})

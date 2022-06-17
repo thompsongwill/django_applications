@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h2 class="text-2xl mt-10 ml-10 font-bold">👨🏼 User Login </h2>
+
+<div class="container py-5">
+    <form class="w-3/5 shadow-md bg-white  m-10 rounded pt-6 px-8 pb-8 mb-4" method="POST">
+        {% csrf_token %}
+
+    <div class="mb-2">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="">Username </label>
+        <div class="shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700 leading-tight">
+            {{form.username}}
+        </div>
+    </div>
+
+  
+    <div class="mb-2">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="">Password </label>
+        <div class="shadow appearance-none border rounded py-2 px-3 mr-10 text-gray-700 leading-tight">
+            {{ form.password }}
+        </div>
+    </div>
+
+
+
+    <input class="bg-green-500 text-white px-5 py-2" type="submit" value="Login">
+</form>
+
+</div>
+
+
+
+{% endblock %}

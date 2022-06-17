@@ -9,7 +9,7 @@
 
 <div class="container py-5">
     <form class="w-3/5 shadow-md bg-white  m-10 rounded pt-6 px-8 pb-8 mb-4" action="{% url 'register' %}" method="POST">
-      
+        {% csrf_token %}
 
     <div class="mb-2">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="">Username </label>

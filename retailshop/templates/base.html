@@ -29,7 +29,11 @@
                     <a href="{% url 'home' %}" class="px-2 py-5 text-gray-500 text-semibold">Home</a>
                     <a href="" class="px-2 py-5 text-gray-500 text-semibold">About</a>
                     <a href="" class="px-2 py-5 text-gray-500 text-semibold">Contact</a>
-                   
+                   {% if user.is_authenticated %}
+                   <a href="{% url 'logout'%}" class="px-2 py-5 text-gray-500 text-semibold"> | &nbsp; <strong>{{user }}</strong> &nbsp; Logout</a>
+                   {% else %}
+                   <a href="{% url 'login'%}" class="px-2 py-5 text-gray-500 text-semibold">Login</a>
+                   {% endif %}
                 </div>
 
         </div>

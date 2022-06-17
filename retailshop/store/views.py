@@ -1,6 +1,7 @@
 from itertools import product
 from django.shortcuts import render, redirect
 from .models import Product
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -18,7 +19,7 @@ def details(request,product_id):
     
     return render(request, 'store/details.html', {'product':product})
 
-
+@login_required
 def add_product(request):
     
     if request.method == 'POST':
@@ -26,8 +27,9 @@ def add_product(request):
         price = request.POST.get('price')
         desc = request.POST.get('desc')
         image = request.FILES['upload']
+        seller = request.user
         
-        product = Product(title=title, price=price, des=desc, image=image)
+        product = Product(seller=seller, title=title, price=price, des=desc, image=image)
         product.save()
     
     return render(request, 'store/addproduct.html')

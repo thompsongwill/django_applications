@@ -34,3 +34,5 @@ def create_profile(request):
        
     return render(request, 'users/createprofile.html')
 
+def seller_profile(request):
+    return render(request, 'users/sellerprofile.html')

@@ -10,9 +10,22 @@ from django.urls import reverse_lazy
 
 
 # def index(request):
-#     goods = Product.objects.all()
-#     context = {'good':goods}
+#     from django.core.paginator import Pagignator
+#     page_obj = goods = Product.objects.all()
+'''
+            Search option
+            
+    # product_name = request.GET.get('product_name')
+    if product_name != '' and proeduct_name is not None:
+            page_obj = goods.filter(title__icontains=product_name)
+'''
+#     paginator = Paginator(page_obj,6)
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+#     
+#     context = {'page_obj':page_obj}
 #     return render(request, 'store/index.html',context)
+#
 
 
 #class base view for product
@@ -21,6 +34,7 @@ class ProductListView(ListView):
     model = Product
     template_name = 'store/index.html'
     context_object_name = 'good'
+    paginate_by = 6
     
 
 

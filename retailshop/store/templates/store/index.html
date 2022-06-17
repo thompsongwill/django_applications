@@ -6,10 +6,10 @@
 
 
 <main class="mt-10 mx-auto max-w-7xl px-4 sm:st-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-    <div class="sm:text-center lg:text-left">
-        <h1 class="text-4xl text-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+    <div class="sm:text-center lg:text-left " >
+        <h1 class="text-4xl text-extrabold justify-center text-gray-900 sm:text-5xl md:text-6xl">
             <span class="block xl:inline">Premium Products</span>
-            <span class="block text-green-500 xl:inline">Non-premium Prices</span>
+            <span class="block justify-center text-green-500 xl:inline">Non-premium Prices</span>
         </h1>
 
         <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Get the best quality products aross borders on free shipping</p>
@@ -17,9 +17,18 @@
 </main>
 
  
-<div class="flex mt-5 p-10 justify-center">
+<div class="flex mt-5 pl-12 pt-10">
 
 <h2 class="text-3xl font-normal mt-0 mb-2 text-gray-500"> Recent Products </h2>
+
+</div>
+
+<div class="mt-5 p-10 justify-center">
+    <h2>Search Products</h2>
+    <form>
+        <input class="font-bold text-gray-700 w-3/12 border p-1" name="product_name" id="product_name" placeholder="Search for a product" type="text" method="GET">
+
+    </form>
 
 </div>
 
@@ -33,7 +42,7 @@
 
 <div class="rounded overflow-hidden shadow-lg">
 
-    <img src="{{ item.image.url }}" class="w-full" alt="{{ item.title }}">
+    <img src="{{ item.image.url }}" class="w-3/6" alt="{{ item.title }}">
     <div class="px-5 py-4">
         <div class="px-6 py-4">
             <div class="font-bold text-xl mb-2">
@@ -58,6 +67,26 @@
 </div>
 
 
+<!-- pagination page -->
+<div class="pagination flex justify-center items-center ">
+    <span>
+        {% if page_obj.has_previous %}
+        <a class="text-sm font-medium border py-2 px-4 items-center inline-flex relattive text-green-500 border-green-500 z-10" href="?page=1">First </a>
+        <a class="text-sm font-medium border py-2 px-4 items-center inline-flex relattive text-green-500 border-green-500 z-10" href="?page={{page_obj.previous_page_number}}">Preivous</a>
+        {% endif %}
+        <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }} - 
+        </span>
+
+        {% if page_obj.has_next %}
+
+        <a class="text-sm font-medium border py-2 px-4 items-center inline-flex relattive text-green-500 border-green-500 z-10" href="?page={{page_obj.next_page_number}}">Next </a>
+        <a class="text-sm font-medium border py-2 px-4 items-center inline-flex relattive text-green-500 border-green-500 z-10" href="?page={{ page_obj.paginator.num_pages }}">last</a>
+
+        {% endif %}
+       
+    </span>
+</div>
 
  
 

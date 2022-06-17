@@ -54,7 +54,7 @@ def delete(request, id):
     product = Product.objects.get(id=id)
     if request.method == 'POST':
         product.delete()
-        return redirect('store:home')
+        return redirect('store:listings')
     return render(request, 'store/delete.html', {'product':product})
 
 @login_required

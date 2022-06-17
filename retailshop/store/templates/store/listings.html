@@ -44,12 +44,12 @@
     </span>
 
              
-    <span class="w-1/5 my-10 mx-10">
-        <a class="bg-green-500 text-white -font-bold px-5 py-2" href="{% url 'store:update' %}">Edit</a>
+    <span class="w-1/5 my-10 ml-10">
+        <a class="bg-green-500 text-white -font-bold px-5 py-2" href="{% url 'store:update' item.id %}">Edit</a>
     </span>
 
-    <span class="w-1/5 my-10 mx-10">
-        <a class="bg-green-500 text-white -font-bold px-5 py-2" href="{% url 'store:delete' %}">Delete</a>
+    <span class="w-1/5 my-10 ">
+        <a class="bg-red-500 text-white -font-bold px-5 py-2" href="{% url 'store:delete' item.id %}">Delete</a>
     </span>
               
 

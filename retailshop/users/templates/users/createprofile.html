@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form action="" class="bg-white shadow-md m-10 w-3/5 rounded px-8 pt-6" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+    <div class="mb-4">
+        <label for="upload">Profile Image</label>
+        <input class="py-2" type="file" accept="image/*" name="upload" id="upload">
+    </div>
+
+    <div class="mb-4">
+        <label for="contact">Contact Number</label>
+        <input class="shawdow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="contact" placeholder="081xxxxxxxx" id="contact">
+    </div>
+
+    <div class="mb-4">
+        <label for="gender">Gender</label>
+        <input class="shawdow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="gender" id="gender">
+    </div>
+
+    <div class="mb-4">
+        <label for="business">Business Name</label>
+        <input class="shawdow appearance-none border rounded py-2 px-3 mr-10 text-gray-700" type="text" name="business" id="business">
+    </div>
+
+    <div class="mb-4">
+        <input class="bg-green-700 text-white px-5 py-2" type="submit" value="Add Details">
+    </div>
+
+</form>
+{% endblock %}

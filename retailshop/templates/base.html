@@ -19,20 +19,21 @@
                 <div class="flex space-x-7">
 
                     <div >
-                        <a href="{% url 'home' %}" class="flex items-center px-2 py-5">
+                        <a href="{% url 'store:home' %}" class="flex items-center px-2 py-5">
                         <img class="h-8 w-8" src="{% static 'store/images/shop_logo.png' %}" alt="">
                         <span class="text-gray-500 font-semibold text-lg">&nbsp; Retail Shop </span>
                     </a>
                     </div>
 
                 <div class="items-center flex space-x-1">
-                    <a href="{% url 'home' %}" class="px-2 py-5 text-gray-500 text-semibold">Home</a>
+                    <a href="{% url 'store:home' %}" class="px-2 py-5 text-gray-500 text-semibold">Home</a>
                     <a href="" class="px-2 py-5 text-gray-500 text-semibold">About</a>
                     <a href="" class="px-2 py-5 text-gray-500 text-semibold">Contact</a>
                    {% if user.is_authenticated %}
-                   <a href="{% url 'logout'%}" class="px-2 py-5 text-gray-500 text-semibold"> | &nbsp; <strong>{{user }}</strong> &nbsp; Logout</a>
+                   <a href="{% url 'users:logout'%}" class="px-10 py-5 text-gray-500 text-semibold"> {{user.username}} - Logout</a>
+                   <a href="{% url 'users:profile'%}" class="px-40 py-5 text-gray-500 text-semibold"> profile </a>
                    {% else %}
-                   <a href="{% url 'login'%}" class="px-2 py-5 text-gray-500 text-semibold">Login</a>
+                   <a href="{% url 'users:login'%}" class="px-10 py-5 text-gray-500 text-semibold">Login</a>
                    {% endif %}
                 </div>
 

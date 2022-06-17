@@ -42,7 +42,7 @@ def update_product(request,id):
         product.image = request.FILES['upload']
         
         product.save()
-        return redirect('home')
+        return redirect('store:home')
         
     return render(request, 'store/update_product.html', {'product':product})
 
@@ -52,5 +52,5 @@ def delete(request, id):
     product = Product.objects.get(id=id)
     if request.method == 'POST':
         product.delete()
-        return redirect('home')
+        return redirect('store:home')
     return render(request, 'store/delete.html', {'product':product})

@@ -1,26 +1,49 @@
-from itertools import product
 from django.shortcuts import render, redirect
 from .models import Product
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
 
 
-def index(request):
-    goods = Product.objects.all()
-    context = {'good':goods}
-    return render(request, 'store/index.html',context)
+# def index(request):
+#     goods = Product.objects.all()
+#     context = {'good':goods}
+#     return render(request, 'store/index.html',context)
 
 
+#class base view for product
 
-def details(request,product_id):
-    product = Product.objects.get(id=product_id)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'store/index.html'
+    context_object_name = 'good'
     
-    return render(request, 'store/details.html', {'product':product})
 
-@login_required
-def add_product(request):
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'store/details.html'
+    context_object_name = 'product'
+
+# def details(request,product_id):
+#     product = Product.objects.get(id=product_id)
+#     return render(request, 'store/details.html', {'product':product})
+
+
+
+#Class based view to add a product
+
+class AddProductView(CreateView):
+    model = Product
+    fields = ['title','price','des','image','seller']
+    #product_form.html
+
+
+'''def add_product(request):
     
     if request.method == 'POST':
         title = request.POST.get('title')
@@ -32,10 +55,14 @@ def add_product(request):
         product = Product(seller=seller, title=title, price=price, des=desc, image=image)
         product.save()
     
-    return render(request, 'store/addproduct.html')
+    return render(request, 'store/addproduct.html') '''
 
 
-def update_product(request,id):
+#Update View...
+
+
+
+'''def update_product(request,id):
     product = Product.objects.get(id=id)
     if request.method == 'POST':
         product.title = request.POST.get('title')
@@ -46,16 +73,29 @@ def update_product(request,id):
         product.save()
         return redirect('store:home')
         
-    return render(request, 'store/update_product.html', {'product':product})
+    return render(request, 'store/update_product.html', {'product':product})'''
 
 
 
-def delete(request, id):
-    product = Product.objects.get(id=id)
-    if request.method == 'POST':
-        product.delete()
-        return redirect('store:listings')
-    return render(request, 'store/delete.html', {'product':product})
+class UpdateProductView(UpdateView):
+    model = Product
+    fields = ['title','price','des','image','seller']
+    template_name_suffix = '_update_form'
+    
+    
+    
+
+# def delete(request, id):
+#     product = Product.objects.get(id=id)
+#     if request.method == 'POST':
+#         product.delete()
+#         return redirect('store:listings')
+#     return render(request, 'store/delete.html', {'product':product})
+
+
+class DeleteProductView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('store:listings')
 
 @login_required
 def listings(request):

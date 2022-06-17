@@ -8,11 +8,13 @@ app_name = 'store'
 
 
 urlpatterns = [ 
-              path('', views.index, name='home'),
-              path('product/<str:product_id>', views.details, name='details'),
-              path('products/add/', views.add_product, name='add_product'),
-              path('products/update/<int:id>/', views.update_product, name='update'),
-              path('products/delete/<int:id>/', views.delete, name='delete'),
+         
+              path('', views.ProductListView.as_view(), name='home'),
+             
+              path('product/<str:pk>', views.ProductDetailView.as_view(), name='details'),
+              path('products/add/', views.AddProductView.as_view(), name='add_product'),
+              path('products/update/<int:pk>/', views.UpdateProductView.as_view(), name='update'),
+              path('products/delete/<int:pk>/', views.DeleteProductView.as_view(), name='delete'),
               path('products/mylistings', views.listings, name='listings'),
               ]
 
